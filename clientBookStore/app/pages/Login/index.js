@@ -1,11 +1,13 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import helpers from '../../helpers/helpers';
 import colors from '../../values/colors';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+  const navigation=useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -26,6 +28,12 @@ const Login = () => {
             indicatorColor={colors.white}
           />
         </View>
+      </View>
+      <View style={styles.loginOrRegister}>
+        <Text style={styles.bottomText}>don't have an account yet ?</Text>
+        <TouchableOpacity onPress={()=>navigation.navigate("Register")}>
+          <Text style={styles.loginOrRegisterBtn}>Sign up</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -57,4 +65,14 @@ const styles = StyleSheet.create({
     width: helpers.px(195),
     marginBottom: helpers.px(16),
   },
+  loginOrRegister:{
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  bottomText:{
+    ...helpers.fontStyle("Regular",14)
+  },
+  loginOrRegisterBtn:{
+    ...helpers.fontStyle('Bold',16,colors.main)
+  }
 });
