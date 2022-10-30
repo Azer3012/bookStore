@@ -8,6 +8,10 @@ import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
   const navigation=useNavigation()
+
+  const login=()=>{
+    navigation.navigate("Main")
+  }
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -26,6 +30,7 @@ const Login = () => {
             text={'Login'}
             color={colors.white}
             indicatorColor={colors.white}
+            onPress={login}
           />
         </View>
       </View>

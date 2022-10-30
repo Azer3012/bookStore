@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthPage, Login, Register } from '../pages'
 import helpers from '../helpers/helpers'
 
-
+import MainTab from './Tabs'
 const Stack=createNativeStackNavigator()
 
 const Stacks = () => {
@@ -13,6 +13,7 @@ const Stacks = () => {
         <Stack.Screen name='AuthPage' component={AuthPage}/>
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='Register' component={Register}/>
+        <Stack.Screen name={"Main"} component={MainTab} options={{ gestureEnabled: false }} />
         
     </Stack.Navigator>
   )
