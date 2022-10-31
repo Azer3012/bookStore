@@ -93,7 +93,7 @@ export default Tabs;
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    // backgroundColor: colors.main,
+    backgroundColor: colors.main,
     elevation: 1,
     borderTopWidth: 0,
     shadowColor: colors.shadow,
