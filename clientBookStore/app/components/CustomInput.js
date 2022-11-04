@@ -10,7 +10,7 @@ import helpers from '../helpers/helpers';
 
 import EyeIcon from 'react-native-vector-icons/Feather';
 
-const CustomInput = ({placeholder, icon, password,onPress}) => {
+const CustomInput = ({placeholder, icon, password,onPress,value,setValue}) => {
   const [hide, setHide] = useState(false);
   return (
     <View style={styles.container}>
@@ -18,7 +18,9 @@ const CustomInput = ({placeholder, icon, password,onPress}) => {
       
       style={styles.input}
        placeholder={placeholder}
-       secureTextEntry={password}
+       secureTextEntry={hide}
+       value={value}
+       onChangeText={setValue}
        />
       {password && (
         <TouchableOpacity onPress={()=>setHide(!hide)}>

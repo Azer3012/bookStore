@@ -26,8 +26,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage, fileFilter });
 
-router.post("/register", upload.single("image"), async (req, res) => {
-  const { path } = req.file;
+router.post("/register", async (req, res) => {
+  
   const { firstName, lastName, email, password } = req.body;
 
   const newUser = new User({
@@ -35,10 +35,11 @@ router.post("/register", upload.single("image"), async (req, res) => {
     lastName,
     email,
     password,
-    image: path,
+    
   });
   await newUser.save();
-  res.status(200).send("ok");
+  res.status(200).send('ok');
+  console.log('geldi psot');
 });
 
 const SALT = "aue";
