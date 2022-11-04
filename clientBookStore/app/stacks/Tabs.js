@@ -30,12 +30,12 @@ const Tabs = () => {
         component={Home}
         options={() => ({
           tabBarButton: props => {
-            <AnimatedTabButton
+           return ( <AnimatedTabButton
               label={'Home'}
               icon={require('../assets/images/home.png')}
               addStyle={styles.tabButton}
               {...props}
-            />;
+            />)
           },
           tabBarShowLabel: false,
         })}
@@ -45,12 +45,12 @@ const Tabs = () => {
         component={Notification}
         options={() => ({
           tabBarButton: props => {
-            <AnimatedTabButton
+            return (<AnimatedTabButton
               label={'Notification'}
               icon={require('../assets/images/notification.png')}
               addStyle={styles.tabButton}
               {...props}
-            />;
+            />)
           },
           tabBarShowLabel: false,
         })}
@@ -60,12 +60,12 @@ const Tabs = () => {
         component={ShoppingCart}
         options={() => ({
           tabBarButton: props => {
-            <AnimatedTabButton
+           return  (<AnimatedTabButton
               label={'Cart'}
               icon={require('../assets/images/shoppingCart.png')}
               addStyle={styles.tabButton}
               {...props}
-            />;
+            />)
           },
           tabBarShowLabel: false,
         })}
@@ -75,12 +75,12 @@ const Tabs = () => {
         component={Home}
         options={() => ({
           tabBarButton: props => {
-            <AnimatedTabButton
+           return ( <AnimatedTabButton
               label={'Home'}
               icon={require('../assets/images/user.png')}
               addStyle={styles.tabButton}
               {...props}
-            />;
+            />)
           },
           tabBarShowLabel: false,
         })}
@@ -93,7 +93,7 @@ export default Tabs;
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    // backgroundColor: colors.main,
+    backgroundColor: colors.white,
     elevation: 1,
     borderTopWidth: 0,
     shadowColor: colors.shadow,

@@ -1,16 +1,55 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import helpers from '../../helpers/helpers';
 import colors from '../../values/colors';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import { LoginValidateSchema } from '../validations/LoginValidateSchema';
+
+import {MMKV} from 'react-native-mmkv'
 
 const Login = () => {
   const navigation=useNavigation()
 
-  const login=()=>{
-    navigation.navigate("Main")
+  const storage=new MMKV()
+
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const [error,setError]=useState(null)
+
+  const validate=async(data)=>{
+
+  
+    try {
+      const isValid=await LoginValidateSchema.validate({password,email})
+      return isValid
+    } catch (error) {
+      console.log(error.errors);
+      setError(error.path)
+      return helpers.toast(error.errors);
+    }
+  }
+
+  const login=async()=>{
+    
+    const data={email,password}
+
+    const isValid=await validate(password,email)
+    if(isValid){
+      try {
+        const response=await axios.post('http://192.168.100.35:3000/login',data)
+        console.log(response);
+
+        storage.set('token',response.data.accessToken)
+
+        navigation.navigate("Main")
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
   }
   return (
     <View style={styles.container}>
@@ -20,10 +59,10 @@ const Login = () => {
           source={require('../../assets/images/book.png')}
         />
         <View style={styles.inputContainer}>
-          <CustomInput placeholder={'User name'} />
+          <CustomInput value={email} setValue={setEmail} placeholder={'Email'} />
         </View>
         <View style={styles.inputContainer}>
-          <CustomInput placeholder={'Password'} password={true} />
+          <CustomInput value={password} setValue={setPassword} placeholder={'Password'} password={true} />
         </View>
         <View style={styles.btnContainer}>
           <CustomButton
