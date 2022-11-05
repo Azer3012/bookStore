@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Notification, ShoppingCart} from '../screens';
+import {Home, Notification, Profile, ShoppingCart} from '../screens';
 import AnimatedTabButton from '../components/AnimatedTabButton';
 import colors from '../values/colors';
 import helpers from '../helpers/helpers';
@@ -72,7 +72,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Home}
+        component={Profile}
         options={() => ({
           tabBarButton: props => {
            return ( <AnimatedTabButton

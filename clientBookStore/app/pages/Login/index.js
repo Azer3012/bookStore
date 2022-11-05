@@ -8,12 +8,20 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { LoginValidateSchema } from '../validations/LoginValidateSchema';
 
-import {MMKV} from 'react-native-mmkv'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const storage=async(data)=>{
+  try {
+    await AsyncStorage.setItem('userInfo',JSON.stringify(data))
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const Login = () => {
   const navigation=useNavigation()
 
-  const storage=new MMKV()
+  
 
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
@@ -39,10 +47,18 @@ const Login = () => {
     const isValid=await validate(password,email)
     if(isValid){
       try {
-        const response=await axios.post('http://192.168.100.35:3000/login',data)
-        console.log(response);
+        const response= await helpers.api().post("/login",data)
 
-        storage.set('token',response.data.accessToken)
+       
+        // axios.post('http://192.168.100.35:3000/login',data)
+
+      await  storage(response.data)
+        
+         
+
+        
+
+       
 
         navigation.navigate("Main")
       } catch (error) {
