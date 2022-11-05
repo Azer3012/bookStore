@@ -4,7 +4,14 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import Stack from './app/stacks/Stacks'
 
+
+
 const App = () => {
+
+ 
+
+  
+  
   return (
    <NavigationContainer>
     <Stack/>

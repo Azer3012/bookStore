@@ -42,7 +42,7 @@ const Register = () => {
     const isValid = await validate({name:firstName,surname:lastName,email,password,repeatPassword});
     if(isValid){
       try {
-        const response=await axios.post('http://192.168.100.35:3000/register',data)
+        const response=await helpers.api().post('/register',data)
         navigation.navigate('Login')
       } catch (error) {
         console.log({error});

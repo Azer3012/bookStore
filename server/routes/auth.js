@@ -62,7 +62,9 @@ router.post("/login", async (req, res) => {
       },
       process.env.JWT_SECRET_KEY
     );
-    res.send({ accessToken });
+    res.send({ accessToken,user });
+    console.log('geldi');
+    
   } else {
     res.status(401).send({
       message: "Email or password is not correct",

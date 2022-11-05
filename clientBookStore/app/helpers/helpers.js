@@ -1,4 +1,5 @@
 // import { inject, observer } from 'mobx-react';
+import axios from 'axios';
 import { Alert, Dimensions, PixelRatio, Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import Toast from 'react-native-toast-message';
@@ -37,6 +38,19 @@ class Helpers {
       circle: (radius, backgroundColor) => ({ width: this.px(radius), height: this.px(radius), borderRadius: this.px(radius), backgroundColor }),
       circumference: (radius, borderWidth, borderColor) => ({ width: this.px(radius), height: this.px(radius), borderRadius: radius, borderWidth, borderColor }),
     }
+  }
+
+  api(headers={}){
+    return axios.create({
+      baseURL:"http://192.168.100.35:3000",
+      timeout:7500,
+      headers:{
+        Accept:"application/json",
+        'Content-Type':'application/json',
+        token:'',
+        ...headers,
+      }
+    })
   }
 
   delay = ms => new Promise(res => setTimeout(res, ms));
