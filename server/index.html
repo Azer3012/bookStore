@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <style>
+        .main{
+            display: flex;
+            flex-direction:column;
+            width: 300px;
+
+        }
+        input{
+            width: 200px;
+
+        }
+        label{
+            display: block;
+        }
+        .inputContainer{
+            margin-bottom: 15px;
+            border: 1px solid black;
+            width: 300px;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Add book</h2>
+
+    <form action="/upload-book" method="post" enctype="multipart/form-data">
+        <div class="main">
+            <div class="inputContainer">
+                <label for="">Book name</label>
+                <input type="text" name="name"><br>
+            </div>
+            <div class="inputContainer">
+                <label for="">Book Price</label>
+                <input type="text" name="price"><br>
+            </div>
+            <div class="inputContainer">
+                <label for=""> Author</label>
+                <input type="text" name="author"><br>
+            </div>
+            <div class="inputContainer">
+                <label for="">Book description</label>
+                <textarea  name="description"></textarea>
+            </div>
+            <div class="inputContainer">
+                <label for="">Book Type</label>
+                <input type="text" name="type"><br>
+            </div>
+            <div class="inputContainer">
+                <label for="">Avatar</label>
+                <input type="file" name="image" accept="image/*" >
+            </div>
+                
+                <button>Submit</button>
+
+        </div>
+
+    </form>
+
+</body>
+</html>

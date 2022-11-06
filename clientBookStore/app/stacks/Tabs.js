@@ -6,10 +6,20 @@ import AnimatedTabButton from '../components/AnimatedTabButton';
 import colors from '../values/colors';
 import helpers from '../helpers/helpers';
 import { isIphoneX } from 'react-native-iphone-x-helper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+
+  const getToken=async()=>{
+    try {
+      const data=await AsyncStorage.getItem("userInfo")
+      const userData=JSON.parse(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Tab.Navigator
       //    screenListeners={e => netInfoStore.setRouteState(e.route.name)}
