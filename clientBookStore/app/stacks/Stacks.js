@@ -29,7 +29,7 @@ const Stacks = () => {
   }, []);
 
   return (
-    <Stack.Navigator initialRouteName={token && 'Main'} screenOptions={helpers.screenOptions}>
+    <Stack.Navigator  screenOptions={helpers.screenOptions}>
       <Stack.Screen name="AuthPage" component={AuthPage} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
