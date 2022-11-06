@@ -9,7 +9,6 @@ const Home = () => {
     try {
       const response = await helpers.api().get('/books');
       setAllBooks(response.data);
-      
     } catch (error) {
       console.log(error);
     }
@@ -31,18 +30,15 @@ const Home = () => {
     );
   };
 
-  
   return (
     <View style={styles.container}>
-    
-    <Text style={styles.header}>Recommendation</Text>
+      <Text style={styles.header}>Recommendation</Text>
       <FlatList
         data={allBooks}
         keyExtractor={item => item._id}
         renderItem={renderItem}
         horizontal
         showsHorizontalScrollIndicator={false}
-        
       />
     </View>
   );
@@ -51,46 +47,40 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    paddingTop:helpers.px(100)
+  container: {
+    flex: 1,
+    paddingTop: helpers.px(100),
   },
-  header:{
-    ...helpers.fontStyle("Bold",16),
-    marginLeft:helpers.px(10)
+  header: {
+    ...helpers.fontStyle('Bold', 16),
+    marginLeft: helpers.px(10),
   },
   image: {
     width: helpers.px(150),
     height: helpers.px(232),
-    marginBottom:helpers.px(13)
-
+    marginBottom: helpers.px(13),
   },
-  item:{
-    marginRight:helpers.px(10),
-    padding:helpers.px(10),
+  item: {
+    marginRight: helpers.px(10),
+    padding: helpers.px(10),
     width: helpers.px(170),
     height: helpers.px(400),
-    justifyContent:'space-between'
-
+    justifyContent: 'space-between',
   },
-  name:{
-    ...helpers.fontStyle("Bold",16),
-    marginBottom:helpers.px(8)
-
+  name: {
+    ...helpers.fontStyle('Bold', 16),
+    marginBottom: helpers.px(8),
   },
-  author:{
-    ...helpers.fontStyle("Regular",14),
-    marginBottom:helpers.px(8)
-
+  author: {
+    ...helpers.fontStyle('Regular', 14),
+    marginBottom: helpers.px(8),
   },
-  description:{
-    ...helpers.fontStyle("Light",12),
-    marginBottom:helpers.px(8)
-
+  description: {
+    ...helpers.fontStyle('Light', 12),
+    marginBottom: helpers.px(8),
   },
-  price:{
-    ...helpers.fontStyle("Bold",12),
-    marginBottom:helpers.px(8)
-
+  price: {
+    ...helpers.fontStyle('Bold', 12),
+    marginBottom: helpers.px(8),
   },
 });
